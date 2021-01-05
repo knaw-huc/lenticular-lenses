@@ -4,6 +4,7 @@ $info: $secondary;
 $light: #eff1f3;
 $primary-very-light: mix($primary, $light, 15%);
 $secondary-very-light: mix($secondary, $light, 10%);
+$component-active-bg: $secondary;
 $border-color: #adb5bd;
 $zindex-fixed: 50;
 $zindex-sticky: 50;
