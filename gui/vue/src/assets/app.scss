@@ -67,6 +67,16 @@ div#app::before {
   align-items: center;
 }
 
+.col-export {
+  flex: 0 0 28%;
+  max-width: 28%;
+}
+
+.col-export-rdf {
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+
 .v-select {
   min-width: 250px;
 }
@@ -320,3 +330,4 @@ ul.inline-list li:not(:first-child):before {
     height: calc(100vh - 3.5rem);
   }
 }
+

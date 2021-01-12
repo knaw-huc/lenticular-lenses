@@ -1,7 +1,7 @@
 <template>
   <card :id="'export_' + type + '_' + spec.id" type="export" :res-id="spec.id" :label="spec.label">
-    <div class="row align-items-stretch">
-      <sub-card label="Data" class="col mx-2">
+    <div class="row align-items-stretch justify-content-around">
+      <sub-card label="Data" class="col-export">
         <div class="custom-control custom-switch mt-3">
           <input type="checkbox" class="custom-control-input" autocomplete="off"
                  :id="'export_linkset_' + type + '_' + spec.id"
@@ -30,7 +30,7 @@
         </div>
       </sub-card>
 
-      <sub-card label="Restrictions" class="col mx-2">
+      <sub-card label="Restrictions" class="col-export">
         <div class="custom-control custom-switch mt-3">
           <input type="checkbox" class="custom-control-input" autocomplete="off"
                  :id="'export_all_links_' + type + '_' + spec.id"
@@ -77,7 +77,7 @@
         </div>
       </sub-card>
 
-      <sub-card label="Format" class="col mx-2">
+      <sub-card label="Format" class="col-export">
         <div class="custom-control custom-switch mt-3">
           <input type="checkbox" class="custom-control-input" autocomplete="off"
                  :id="'export_csv_' + type + '_' + spec.id"
@@ -106,7 +106,7 @@
         </div>
       </sub-card>
 
-      <sub-card label="RDF reification" class="col mx-2">
+      <sub-card label="RDF reification" class="col-export-rdf">
         <div class="custom-control custom-switch mt-3">
           <input type="checkbox" class="custom-control-input" autocomplete="off"
                  :id="'export_standard_reif_' + type + '_' + spec.id"
@@ -132,6 +132,23 @@
           <label class="custom-control-label" :for="'export_singleton_reif_' + type + '_' + spec.id">
             Singleton
           </label>
+        </div>
+      </sub-card>
+
+      <sub-card label="RDF vocabulary" class="col-export-rdf">
+        <div class="input-group input-group-sm mt-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Namespace</span>
+          </div>
+          <input type="text" class="form-control" placeholder="Prefix" style="max-width:80px;" v-model="prefix"/>
+          <input type="text" class="form-control" placeholder="URI" v-model="uri"/>
+        </div>
+
+        <div class="input-group input-group-sm mt-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">{{ prefix }}:</span>
+          </div>
+          <input type="text" class="form-control" placeholder="Match predicate" v-model="predicate"/>
         </div>
       </sub-card>
     </div>
@@ -163,6 +180,9 @@
                 exportStandardReif: false,
                 exportRdfStarReif: false,
                 exportSingletonReif: false,
+                prefix: null,
+                uri: null,
+                predicate: null,
             }
         },
         props: {
